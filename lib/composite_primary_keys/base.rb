@@ -110,6 +110,10 @@ module ActiveRecord
         [self.class.primary_keys, ids].transpose.each {|key, an_id| write_attribute(key , an_id)}
         id
       end
+      
+      def id_was
+        attribute_was("id")
+      end
 
       def ==(comparison_object)
         return false if !persisted? && comparison_object.object_id != object_id
